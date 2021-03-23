@@ -1,0 +1,52 @@
+.CheckoutSummary {
+    text-align : center;
+    width:80%;
+    margin:auto;
+    margin-bottom: 20px;
+}
+.text_style{
+    color:#fff;
+    text-align: center;
+}
+.BuildControls_rw{
+    width :100%;
+    display:flex;
+    flex-flow:row;
+    align-items: center;
+    margin-left:50%;
+    padding:10px 0;
+}
+
+
+@media (min-width :500px) and (min-height:401px){
+    .BuildControls_rw{
+        width :100%;
+        display:flex;
+        flex-flow:row;
+        align-items: center;
+        margin-left:5%;
+        padding:10px 0;
+    }
+}
+
+@media (min-width :500px) and (min-height:401px){
+    .BuildControls_rw{
+        width :100%;
+        display:flex;
+        flex-flow:row;
+        align-items: center;
+        margin-left:38%;
+        padding:10px 0;
+    }
+}
+
+@media (min-width :1000px) and (min-height:700px){
+    .BuildControls_rw{
+        width :100%;
+        display:flex;
+        flex-flow:row;
+        align-items: center;
+        margin-left:42%;
+        padding:10px 0;
+    }
+}

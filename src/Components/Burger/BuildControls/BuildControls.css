@@ -1,0 +1,26 @@
+.BuildControls{
+    width :100%;
+    background-color:#0f1f2a ;
+    display:flex;
+    flex-flow:column;
+    align-items: center;
+    box-shadow: 0 2px 1px #0b1216 ;
+    margin:auto;
+    padding:10px 0;
+}
+.price{
+
+    color: white;
+    margin-left: 88px;
+
+}
+.price-no{
+    margin-left: 28px;
+}
+.units{
+    font-size: 13px;
+    padding-left: 7px;
+}
+.align{
+    margin-left: 40px;
+}

@@ -1,0 +1,33 @@
+
+.Label{
+    font-weight: bold;
+    display:block;
+    margin-bottom:8px;
+    width:100%;
+
+}
+.Textarea{
+    outline:none;
+    border:1px solid #ccc;
+    background-color:white;
+    font:inherit;
+    padding:6px 10px;
+    display:block;
+    width:100%;
+}
+.Textarea :focus{
+    outline:none;
+    background-color: #ccc;
+    width:100%;
+}
+.Invalid{
+    border:1px #497CA2;
+    background-color: rgb(255, 140, 128)
+}
+.ValidationError {
+    color:#497CA2;
+    margin: 5px 0;
+} 
+.TextField{
+    color:#497CA2;
+}
