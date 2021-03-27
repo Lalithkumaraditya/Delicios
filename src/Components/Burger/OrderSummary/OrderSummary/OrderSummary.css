@@ -8,13 +8,3 @@
     margin:auto;
     padding:10px 64px;
 }
-.BuildControls{
-    width :100%;
-    background-color:#0f1f2a ;
-    display:flex;
-    flex-flow:column;
-    align-items: center;
-    box-shadow: 0 2px 1px #0b1216 ;
-    margin:auto;
-    padding:10px 0;
-}

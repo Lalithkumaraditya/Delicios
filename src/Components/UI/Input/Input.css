@@ -31,3 +31,6 @@
 .TextField{
     color:#497CA2;
 }
+.Error{
+    background-color: rgb(229, 145, 145);
+}

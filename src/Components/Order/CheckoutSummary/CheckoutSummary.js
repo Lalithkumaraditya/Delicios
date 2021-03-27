@@ -2,7 +2,7 @@ import React from 'react'
 import Burger from '../../Burger/Burger'
 import './CheckoutSmmary.css';
 import Button from '../../UI/Button/Button'
-import Spinner from '../../Spinner/Spinner'
+
 const CheckoutSummary = (props) =>{
 return(
     <React.Fragment>
