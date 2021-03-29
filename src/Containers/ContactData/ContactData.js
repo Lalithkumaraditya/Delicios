@@ -5,6 +5,7 @@ import axios from "../../axios";
 import Spinner from "../../Components/Spinner/Spinner";
 import Input from "../../Components/UI/Input/Input";
 import { textAlign } from "@material-ui/system";
+import {connect} from 'react-redux';
 class ContactData extends Component {
   state = {
     orderForm: {
@@ -102,7 +103,7 @@ class ContactData extends Component {
     }
     this.setState({ loading: true });
     const order = {
-      ingredients: this.props.ingredients,
+      ingredients: this.props.ings,
       price: this.props.price,
       orderData:formData
     };
@@ -148,9 +149,9 @@ class ContactData extends Component {
    // console.log(updatedFormElement);
    let formIsValid=true;
    for(let inputIdentifier in updatedOrderForm){
-     formIsValid =updatedOrderForm[inputIdentifier].valid && formIsValid
+     formIsValid =updatedOrderForm[inputIdentifier].valid && formIsValid;
    }
-  console.log(formIsValid)
+    console.log(formIsValid)
     updatedOrderForm[inputIdentifier]=updatedFormElement;
   
 
@@ -167,6 +168,7 @@ class ContactData extends Component {
       })
     }
     let form = (
+    
       <form onSubmit={this.orderHandler}>
        
      {formElementsArray.map(formElement =>(
@@ -186,6 +188,7 @@ class ContactData extends Component {
           ORDER
         </Button>
       </form>
+     
     );
     if (this.state.loading) {
       form = <Spinner />;
@@ -198,4 +201,12 @@ class ContactData extends Component {
     );
   }
 }
-export default ContactData;
+
+const mapStateToProps=(state)=>{
+  return{
+    ings: state.ingredients,
+    price:state.totalPrice
+  }
+}
+
+export default connect(mapStateToProps)(ContactData);

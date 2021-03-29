@@ -3,7 +3,8 @@ import * as actionTypes from '../actions/actionTypes';
 import { authFail, authSuccess } from '../actions/auth';
 import {updateObject} from '../utility';
 const initialstate={
-
+    ingredients: null,
+    totalPrice: 30,
     token:null,
     userId:null,
     error:null,
