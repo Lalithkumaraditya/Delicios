@@ -62,4 +62,40 @@
     border-radius: 20px;
     opacity: 1;
   }
-  
+  .BuildControls_rw_auth{
+    display: flex;
+    align-items: center;
+    margin:5px 0;
+}
+
+
+@media (min-width :500px) and (min-height:401px){
+    .BuildControls_rw_auth{
+        display: flex;
+        align-items: center;
+        margin:5px 0;
+    }
+}
+
+@media (min-width :500px) and (min-height:401px){
+    .BuildControls_rw_auth{
+        width :100%;
+        display:flex;
+        flex-flow:row;
+        align-items: center;
+        margin-left:28%;
+        padding:10px 0;
+        gap: 10px;
+    }
+}
+
+@media (min-width :1000px) and (min-height:700px){
+    .BuildControls_rw_auth{
+        width :100%;
+        display:flex;
+        flex-flow:row;
+        align-items: center;
+        margin-left:32%;
+        padding:10px 0;
+    }
+}

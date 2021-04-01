@@ -14,9 +14,9 @@ return(
     </div>
     <div className="BuildControls_rw">
      <Button 
-     button_style="button_medium"
+     button_style="primary"
      clicked={props.onCheckoutCancelled}>Cancel</Button>
-     <Button button_style="button_medium"
+     <Button  button_style="primary"
      clicked={props.onCheckoutContinued}>Continue</Button>
      </div>
      </React.Fragment>

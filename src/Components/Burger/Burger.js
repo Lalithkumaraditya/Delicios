@@ -1,5 +1,4 @@
 import React from 'react';
-
 import  './Burger.css';
 import BurgerIngredient from './BurgerIngredients/BurgerIngredient';
 
@@ -17,6 +16,7 @@ const burger = ( props ) => {
         transformedIngredients = <p className='text_style'>Please start adding ingredients!</p>;
     }
     return (
+
         <div className="Burger">
             <BurgerIngredient type="bread-top" />
             {transformedIngredients}

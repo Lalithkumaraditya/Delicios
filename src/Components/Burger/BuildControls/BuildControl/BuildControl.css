@@ -9,7 +9,6 @@
     display: block;
     padding:5px;
     margin:0 5px;
-    width:80px;
     border:1px solid #0b1216;
     cursor: pointer;
     outline: none;
@@ -21,4 +20,8 @@
     margin:0 5px;
     width:80px;
   
+}
+.text_style{
+    color:white;
+ 
 }

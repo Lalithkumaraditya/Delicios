@@ -10,3 +10,7 @@ export {
         PurchaseSuccessRedirect
     
     } from './order.js';
+
+    export {
+    auth
+    } from './auth.js'

@@ -16,9 +16,9 @@ return(
      {ingredientSummary}
     </ul>
 <p>Total Price:{props.price}  Rs</p>
-    <div className='OrderSummary_Btns'>
-    <Button button_style='button_medium' clicked={props.canceled}>Cancel</Button>
-    <Button button_style='button_medium' clicked={props.continue}>Continue</Button>
+    <div className='BuildControl'>
+    <Button button_style='primary' size="large" clicked={props.canceled}>Cancel</Button>
+    <Button button_style='primary' size="large"  clicked={props.continue}>Continue</Button>
     </div>
     </React.Fragment>
 );

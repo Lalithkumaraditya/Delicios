@@ -161,7 +161,7 @@ class ContactData extends Component {
     }
     let form = (
     
-      <form onSubmit={this.orderHandler}>
+      <form>
        
      {formElementsArray.map(formElement =>(
        <Input key={formElement.id}
@@ -171,12 +171,12 @@ class ContactData extends Component {
          invalid={!formElement.config.valid}
          shouldValidate={formElement.config.Validation}
          touched={formElement.config.touched}
-
+        
          changed={(event)=>this.InputChangeHandler(event,formElement.id)}/>
      ))}
       
         <br></br>
-        <Button button_style="button_medium" disabled={!this.state.formIsValid} >
+        <Button button_style="primary" disabled={!this.state.formIsValid}  clicked={this.orderHandler}>
           ORDER
         </Button>
       </form>

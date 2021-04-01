@@ -23,7 +23,7 @@ const BuildControls = (props) =>{
      
         <div className='align'>
 
-         <Button  button_style='button_big' disabled={props.flag} clicked={props.ordered }>CHECKOUT</Button>
+         <Button button_style='secondary' disabled={props.flag} clicked={props.ordered }><span className="text_style">CHECKOUT</span></Button>
         </div>
     </div>
  )

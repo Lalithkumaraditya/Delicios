@@ -11,7 +11,7 @@
 .price{
 
     color: white;
-    margin-left: 88px;
+    margin-left: -16px;
 
 }
 .price-no{
@@ -22,5 +22,12 @@
     padding-left: 7px;
 }
 .align{
-    margin-left: 40px;
+    margin-left: -12px;
+}
+.text_style{
+    color:white;
+ 
+}
+.Align-button{
+    margin-left: -20px;
 }

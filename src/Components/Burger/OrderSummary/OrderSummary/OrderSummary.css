@@ -1,10 +1,6 @@
-.OrderSummary_Btns{
-    width :100%;
-
-    display:flex;
-    flex-flow:row;
+.BuildControl{
+    display: flex;
     align-items: center;
-    
-    margin:auto;
-    padding:10px 64px;
+    margin:5px 0;
+  
 }
