@@ -1,0 +1,65 @@
+
+
+.ContactData{
+    margin:20px auto;
+    width:30%;
+    text-align:center;
+    box-shadow: 0 2px 3px #ccc;
+    border:2px solid #eee;
+    padding:10px;
+    box-sizing: border-box;
+    background-color: white;
+    box-shadow: 0 0px 10px 0 rgba(0, 0, 0, 0.5);
+    border-radius: 20px;
+  
+  }
+  
+  .shadow {
+    display: flex;
+    align-items: center;
+    width: 300px;
+    height: 300px;
+    margin: 50px;
+    float: left;
+    box-sizing: border-box;
+    padding: 30px;
+    font-family: sans-serif;
+    font-size: 18px;
+    text-align: center;
+    border-radius: 20px;
+  }
+  
+  #slow-transition {
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
+    transition: box-shadow 500ms;
+  }
+  
+  #slow-transition:hover {
+    box-shadow: 0 0px 10px 0 rgba(0, 0, 0, 0.5);
+  }
+  
+  #fast-transition {
+    position: relative;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
+    border-radius: 20px;
+  }
+  
+  #fast-transition::before {
+    content: ' ';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  
+    box-shadow: 0px 40px 40px 50px rgb(18, 45, 71);
+    opacity: 0;
+    transition: opacity 500ms;
+    border-radius: 20px;
+  }
+  
+  #fast-transition:hover::before {
+    border-radius: 20px;
+    opacity: 1;
+  }
+  

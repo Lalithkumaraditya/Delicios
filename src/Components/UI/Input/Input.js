@@ -39,7 +39,7 @@ const Input = props => {
         color="primary"
         style={{ margin: 8 }}
         placeholder={props.placeholder}
-        helperText= {(props.invalid && props.touched)  ? props.helper : null}
+        helperText= {(props.invalid && props.touched)  ? props.elementconfig.helper : null}
         fullWidth
         margin="normal"
         InputLabelProps={{
