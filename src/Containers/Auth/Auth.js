@@ -5,6 +5,8 @@ import './Auth.css'
 import {connect} from 'react-redux'
 import * as actions from '../../store/actions/index'
 import React, { Component } from "react";
+import Spinner from '../../Components/Spinner/Spinner'
+import SnackBar from '../../Components/UI/SnackBar/SnackBar'
 
 class Auth extends Component {
   state = {
@@ -44,7 +46,9 @@ class Auth extends Component {
   
     },
     formIsValid:true,
-    isSignup:true
+    isSignup:true,
+    open:false,
+
   };
   checkValidity(value,rules){
     let isValid=true;
@@ -88,10 +92,35 @@ class Auth extends Component {
     this.setState({controls:updatedcontrols,formIsValid:formIsValid})
     
   };
+  handleClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+
+    this.setState({
+      ...this.state,
+      open:false,
+    })
+  };
   orderHandler = event => {
     event.preventDefault();
+   
     console.log(this.state.isSignup )
    this.props.onAuth(this.state.controls.email.value,this.state.controls.password.value,this.state.isSignup);
+   if(this.props.error){
+    console.log( 'error');
+    this.setState({
+      ...this.state,
+      open:true,
+    })
+  }
+  else{
+    console.log('No error');
+    this.setState({
+      ...this.state,
+      open:true,
+    })
+  }
   };
  switchAuthModeHandler=()=>{
    console.log(this.state.isSignup);
@@ -99,6 +128,7 @@ class Auth extends Component {
      return{isSignup:!(prevState.isSignup)}
    })
  }
+  
   render() {
     const formElementsArray = [];
     for (let key in this.state.controls) {
@@ -123,8 +153,21 @@ class Auth extends Component {
        </React.Fragment>
        
     );
+    if(this.props.loading){
+      form=<Spinner />
+    }
+    let errorMessage;
+       let SuccessDisplay=<p>{this.state.isSignup ?   'SIGN-IN' :'SIGN-UP' }  </p>
+      if(this.props.error && (!(this.props.loading))){
+        errorMessage=<SnackBar status={this.state.open} errorStatus={this.props.error} handleClose={this.handleClose} />
+      }
+      if((!(this.props.error)) && (!(this.props.loading))){
+        errorMessage=<SnackBar status={this.state.open} errorStatus={this.props.error} SuccessDisplay={SuccessDisplay} handleClose={this.handleClose} />
+      }
+     
     return (
       <div className="ContactData" id="fast-transition">
+        {errorMessage}
            <form >
        {form} 
        <div className="BuildControls_rw_auth">
@@ -132,13 +175,21 @@ class Auth extends Component {
             Submit
           </Button>
           <Button button_style="secondary"  size="medium" clicked={this.switchAuthModeHandler} >
-           Switch to {this.state.isSignup ?   'SIGNUP' :'SIGNIN' } 
+           Switch to {this.state.isSignup ?   'SIGN-IN' :'SIGN-UP' } 
           </Button>
           </div>
        </form>
+       {errorMessage}
       </div>
     );
   }
+}
+
+const mapStateToProps=(state)=>{
+return{
+  loading:state.auth.loading,
+  error:state.auth.error
+}
 }
 
 const mapDispatchToProps=(dispatch)=>{
@@ -147,4 +198,4 @@ const mapDispatchToProps=(dispatch)=>{
   };
 };
 
-export default connect(null,mapDispatchToProps)(Auth);
+export default connect(mapStateToProps,mapDispatchToProps)(Auth);

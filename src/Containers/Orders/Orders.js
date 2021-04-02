@@ -29,7 +29,7 @@ class Orders extends Component{
       //   this.setState({loading:false});
 
       // });
-      this.props.fetchOrderStart();
+      this.props.fetchOrderStart(this.props.token);
     }
 render(){
      let orders=  <Spinner />;
@@ -51,14 +51,15 @@ render(){
 const mapStateToProps=state=>{
   return{
     orders:state.order.orders,
-    loading:state.order.fLoading
+    loading:state.order.fLoading,
+    token:state.auth.token
   }
 }
   const mapDispatchToProps=dispatch=>{
     return{
-      fetchOrderStart:()=>dispatch(actions.fetchOrderStart())
+      fetchOrderStart:(token)=>dispatch(actions.fetchOrderStart(token))
     }
   }
  
 
-export default connect(mapStateToProps,mapDispatchToProps)(Orders);
+export default connect(mapStateToProps,mapDispatchToProps)(withErrorHandler(Orders,axios));
