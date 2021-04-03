@@ -8,7 +8,7 @@ const Toolbar = (props) =>(
 <header className='Toolbar'>
     <Logo />
     <nav>
-       <NavigationItems />
+       <NavigationItems isAuth={props.isAuth}/>
     </nav>
 </header>
     </React.Fragment>

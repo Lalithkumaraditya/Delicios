@@ -14,7 +14,8 @@ const initialState = {
   totalPrice:30,
   purchasing: false,
   loading: false,
-  error:false
+  error:false,
+  building:false
 };
 
 const reducer = (state = initialState, action) => {
@@ -24,7 +25,8 @@ const reducer = (state = initialState, action) => {
           ...state,
           ingredients:{
               ...state.ingredients,
-              [action.ingredientName]:state.ingredients[action.ingredientName]+1
+              [action.ingredientName]:state.ingredients[action.ingredientName]+1,
+              building:true
           },
           totalPrice: state.totalPrice + INGREDIENTS_PRICES[action.ingredientName]
       };
@@ -33,7 +35,8 @@ const reducer = (state = initialState, action) => {
             ...state,
             ingredients:{
                 ...state.ingredients,
-                [action.ingredientName]:state.ingredients[action.ingredientName]-1 
+                [action.ingredientName]:state.ingredients[action.ingredientName]-1,
+                building:true
             },
             totalPrice:  state.totalPrice - INGREDIENTS_PRICES[action.ingredientName]
         };
@@ -42,7 +45,8 @@ const reducer = (state = initialState, action) => {
             ...state,
             ingredients:action.ingredients,
             error:false,
-            totalPrice:30
+            totalPrice:30,
+            building:false
 
             
           }

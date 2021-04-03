@@ -9,7 +9,10 @@ const theme =createMuiTheme({
         secondary:{
             main:pink[500],
             coontrastText:cyan[600]
-        }
+        },
+        root: {
+            backgroundColor: '#80deea',
+          },
     }
 })
 export default theme;

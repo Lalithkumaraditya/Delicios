@@ -10,6 +10,7 @@ const initialstate = {
   error: null,
   login: false,
   loading: false,
+  authRedirectPath:'/'
 };
 const reducer = (state = initialstate, action) => {
   switch (action.type) {
@@ -22,15 +23,18 @@ const reducer = (state = initialstate, action) => {
     }
     case actionTypes.AUTH_SUCCESS:{
         return{
+          ...state,
         error:null,
         loading:false,
         token:action.idToken,
-        userId:action.userId
+        userId:action.userId,
+      
         }
 
     }
     case actionType.AUTH_FAIL:{
         return{
+          ...state,
             error:action.error,
             loading:false,
 
@@ -41,9 +45,13 @@ const reducer = (state = initialstate, action) => {
         return{
           ...state,
           token:null,
-          userId:null
+          userId:null,
         }
-
+      case actionTypes.SET_AUTH_REDIRECT:
+        return{
+         ...state,
+         authRedirectPath:action.path
+        }
 
 
     default:

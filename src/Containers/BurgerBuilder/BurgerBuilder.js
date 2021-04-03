@@ -9,6 +9,8 @@ import OrdeSummary from "../../Components/Burger/OrderSummary/OrderSummary/Order
 import Spinner from "../../Components/Spinner/Spinner";
 import withErrorHandler from "../../hoc/withErrorHandler/withErrorHandler";
 import * as actions from "../../store/actions/index";
+import * as authActions from '../../store/actions/auth'
+import {Redirect} from 'react-router-dom'
 
 class BurgerBuilder extends Component {
   state = {
@@ -22,7 +24,15 @@ class BurgerBuilder extends Component {
   }
  
   purchaseHandler = () => {
-    this.setState({ purchasing: true });
+    if(this.props.isAuth){
+
+      this.setState({ purchasing: true });
+    }
+    else{
+      this.props.onSetRedirectPath('/checkout')
+      this.props.history.push('/auth');
+
+    }
   };
   purchaseCancel = () => {
     this.setState({ purchasing: false });
@@ -61,6 +71,7 @@ class BurgerBuilder extends Component {
             disabled={disabledInfo}
             price={this.props.price}
             flag={!flag}
+            isAuth={this.props.isAuth}
             ordered={this.purchaseHandler}
           />
         </React.Fragment>
@@ -90,7 +101,8 @@ const mapStateToProps = (state) => {
   return {
     ings: state.burgerBuilder.ingredients,
     price:state.burgerBuilder.totalPrice,
-    error:state.burgerBuilder.error
+    error:state.burgerBuilder.error,
+    isAuth:state.auth.token !=null
   };
 
 };
@@ -103,7 +115,9 @@ const mapDispatchToProps = (dispatch) => {
       OnIngredientsLoad: () =>
       dispatch(actions.OnIngredientsLoad()),
       onOrderSuccessRedirect: () =>
-      dispatch(actions.PurchaseSuccessRedirect())
+      dispatch(actions.PurchaseSuccessRedirect()),
+      onSetRedirectPath: (path) =>
+      dispatch(authActions.setAuthRedirect(path))
   };
 };
 export default connect(

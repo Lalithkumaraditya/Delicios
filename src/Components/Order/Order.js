@@ -20,14 +20,6 @@ let spanTag=null
     }
     
    const  handleDelete=()=>{
-  // console.log(ingredients[0].name);
-
-    // console.log(ingredients[i].amount);
-    
- 
-  
-
-
 
     }
     const ingredientOutPut=ingredients.map(ig=>{
@@ -43,7 +35,7 @@ let spanTag=null
 
    
       
-        <p style={{color:'white'}} className='badge_text'>Ingredients:</p>
+        <p style={{color:'white'}} className='badge_text'>Ingredients:</p><br></br>
       
         {ingredients.map(ing =>(
             <div className='gap_btwn'>
@@ -60,7 +52,8 @@ let spanTag=null
       </div>
      
       ))}
-
+        <br></br>
+        <br></br>
         <h1 style={{color:'white'}} className='badge_text'>Price:</h1>
         <div className='badge_text'>
         <Chip

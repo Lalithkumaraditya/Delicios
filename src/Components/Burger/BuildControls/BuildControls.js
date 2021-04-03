@@ -1,4 +1,4 @@
-import recat from 'react';
+import React from 'react';
 import './BuildControls.css'
 import BuildControl from './BuildControl/BuildControl'
 import Button from '../../UI/Button/Button'
@@ -23,7 +23,7 @@ const BuildControls = (props) =>{
      
         <div className='align'>
 
-         <Button button_style='secondary' disabled={props.flag} clicked={props.ordered }><span className="text_style">CHECKOUT</span></Button>
+         <Button button_style='secondary' disabled={props.flag } clicked={props.ordered }><span className="text_style">{props.isAuth ? 'CHECKOUT' : 'SignUp to Order'}</span></Button>
         </div>
     </div>
  )

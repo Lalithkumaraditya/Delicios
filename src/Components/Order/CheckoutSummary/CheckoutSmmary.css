@@ -45,3 +45,14 @@
         padding:10px 0;
     }
 }
+@media only screen and (max-width: 600px) {
+    .BuildControls_rw{
+        width :100%;
+        display:flex;
+        flex-flow:row;
+        align-items: center;
+        margin-left:30%;
+        padding:10px 0;
+        gap:10px
+    }
+}

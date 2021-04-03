@@ -30,3 +30,15 @@
 .text_style{
     color: #ffffff;
 }
+
+@media only screen and (max-width: 600px) {
+    .Burger{
+        width:85%;
+        margin:auto;
+        height:300px;
+        overflow: scroll;
+        text-align:center;
+        font-weight:bold;
+        font-size:1.2rem;
+    }
+}

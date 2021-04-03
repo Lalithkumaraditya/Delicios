@@ -3,6 +3,9 @@ import React from "react";
 import "./SnackBar.css";
 import Snackbar from "@material-ui/core/Snackbar";
 import MuiAlert from "@material-ui/lab/Alert";
+import {ThemeProvider} from '@material-ui/core';
+import theme from '../../../theme';
+
 
 function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
@@ -10,13 +13,16 @@ function Alert(props) {
 
 const SnackBar = (props) => {
   let severity = "";
-  let message = "";
+  let message = "Something went wrong";
   let SuccessDisplay=props.SuccessDisplay
   let displayer= SuccessDisplay ?   'SIGN-IN' :'SIGN-UP';
   if (props.errorStatus) {
     severity = "error";
-    if (props.errorStatus.message == "EMAIL_EXISTS") {
+    if (props.errorStatus == "EMAIL_EXISTS") {
       message = "YYayyy!! 😃 You are already a user please SignIn";
+    }
+    else if(props.errorStatus =="Request failed with status code 400"){
+         message="Some thing went wrong please check the credentials"
     }
   } else if(props.errorStatus==null){
     SuccessDisplay=props.SuccessDisplay
@@ -25,6 +31,7 @@ const SnackBar = (props) => {
   }
 
   return (
+    <ThemeProvider theme={theme}>
     <div>
       <Snackbar
         className="SnackBar_Align"
@@ -37,6 +44,7 @@ const SnackBar = (props) => {
         </Alert>
       </Snackbar>
     </div>
+      </ThemeProvider>
   );
 };
 

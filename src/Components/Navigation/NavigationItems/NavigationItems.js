@@ -1,12 +1,17 @@
 import React from 'react'
 import './NavigationItems.css'
 import NavigationItem from './NavigationItem/NavigationItem'
-const NavigationItems = ()=>{
+const NavigationItems = (props)=>{
+
     return(
+       
     <ul className='NavigationItems'>
         <NavigationItem link='/' exact>Burger Builder</NavigationItem>
-        <NavigationItem link='/orders'>Orders</NavigationItem>
-        <NavigationItem link='/auth'>Signin</NavigationItem>
+       { props.isAuth ? <NavigationItem link='/orders'>Orders</NavigationItem> : null}
+      { !props.isAuth 
+      ? <NavigationItem link='/auth'>Login</NavigationItem>
+      : <NavigationItem link='/logout'>Logout</NavigationItem>
+    }
     </ul>
     );
 

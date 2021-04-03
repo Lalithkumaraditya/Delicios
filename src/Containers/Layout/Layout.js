@@ -1,14 +1,23 @@
-import React, { Component } from 'react';
-import Login from '../Login/Login'
-import UserIcon from '../../Assets/User.png'
+import React from 'react'
+import './Layout.css'
+import {connect} from 'react-redux'
+import ToolBar from '../../Components/Navigation/Toolbar/Toolbar'
+import  { Component } from 'react';
+
 class Layout extends Component {
-    render() {
-        return (
-            <div>
-                <Login />
-            </div>
-        );
-    }
+   render() {
+      return (
+         <React.Fragment>
+       <ToolBar isAuth={this.props.isAuth}/>
+        <main className='Content'>{this.props.children}</main>
+        </React.Fragment>
+      );
+   }
+}
+const mapStateToProps = (state)=>{
+   return{
+       isAuth: state.auth.token != null
+   }
 }
 
-export default Layout;
+export default connect(mapStateToProps)(Layout);

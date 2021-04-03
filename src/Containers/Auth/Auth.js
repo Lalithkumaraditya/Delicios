@@ -2,6 +2,7 @@
 import Input from "../../Components/UI/Input/Input";
 import Button from "../../Components/UI/Button/Button";
 import './Auth.css'
+import {Redirect} from 'react-router-dom'
 import {connect} from 'react-redux'
 import * as actions from '../../store/actions/index'
 import React, { Component } from "react";
@@ -45,11 +46,16 @@ class Auth extends Component {
      
   
     },
-    formIsValid:true,
+    formIsValid:false,
     isSignup:true,
     open:false,
 
   };
+  componentDidMount(){
+    if(!this.props.buildingBurger && this.props.authRedirectPath !=='/'){
+      this.props.onSetAuthRedirectPath()
+    }
+  }
   checkValidity(value,rules){
     let isValid=true;
     if(!rules){
@@ -157,21 +163,25 @@ class Auth extends Component {
       form=<Spinner />
     }
     let errorMessage;
-       let SuccessDisplay=<p>{this.state.isSignup ?   'SIGN-IN' :'SIGN-UP' }  </p>
+  
       if(this.props.error && (!(this.props.loading))){
-        errorMessage=<SnackBar status={this.state.open} errorStatus={this.props.error} handleClose={this.handleClose} />
+        errorMessage=<SnackBar status={this.state.open} errorStatus={this.props.error} SuccessDisplay={this.state.isSignup} handleClose={this.handleClose} />
       }
-      if((!(this.props.error)) && (!(this.props.loading))){
-        errorMessage=<SnackBar status={this.state.open} errorStatus={this.props.error} SuccessDisplay={SuccessDisplay} handleClose={this.handleClose} />
-      }
-     
+      // if((!(this.props.error)) && (!(this.props.loading))){
+      //   errorMessage=<SnackBar status={this.state.open} errorStatus={this.props.error} SuccessDisplay={this.state.isSignup} handleClose={this.handleClose} />
+      // }
+      let authRedirect=null
+     if(this.props.isAuth){
+      authRedirect=<Redirect to={this.props.authRedirectPath} />
+     }
     return (
       <div className="ContactData" id="fast-transition">
+        {authRedirect}
         {errorMessage}
            <form >
        {form} 
        <div className="BuildControls_rw_auth">
-       <Button button_style="primary" clicked={this.orderHandler} >
+       <Button button_style="primary" clicked={this.orderHandler}  >
             Submit
           </Button>
           <Button button_style="secondary"  size="medium" clicked={this.switchAuthModeHandler} >
@@ -188,13 +198,18 @@ class Auth extends Component {
 const mapStateToProps=(state)=>{
 return{
   loading:state.auth.loading,
-  error:state.auth.error
+  error:state.auth.error,
+  isAuth:state.auth.token != null,
+  buildingBurger:state.burgerBuilder.building,
+  authRedirectPath:state.auth.authRedirectPath
+
 }
 }
 
 const mapDispatchToProps=(dispatch)=>{
   return{
-       onAuth: (email,password,isSignup)=>dispatch(actions.auth(email,password,isSignup))
+       onAuth: (email,password,isSignup)=>dispatch(actions.auth(email,password,isSignup)),
+       onSetAuthRedirectPath:()=>(actions.setAuthRedirect('/'))
   };
 };
 
