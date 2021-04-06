@@ -39,7 +39,7 @@ render(){
       orders=this.props.orders.filter(order=>{
         return (UserEmail === order.orderData.email);
       }).map(order=>{
-        return <Order key={order.id} ingredients={order.ingredients} price={order.price}/>
+        return <Order key={order.id} ingredients={order.ingredients} price={order.price} orderInfo={order.orderData}/>
       })
     console.log(orders)
      }

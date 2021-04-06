@@ -9,6 +9,7 @@ import theme from '../../theme'
 
 const order = (props)=>{
 const ingredients= [];
+const orderInfo=[];
 let Itemname=[];
 let number=[];
 let spanTag=null
@@ -18,6 +19,15 @@ let spanTag=null
         amount:props.ingredients[ingredientName]
      })
     }
+  //   for(let orderName in props.orderInfo){
+       
+  //     orderInfo.push({name:orderName,
+  //     amount:props.orderInfo[orderName]
+  //  })
+  //  console.log("OrderInfo"+JSON.stringify(orderInfo.amount));
+  
+  // }
+  console.log(props.orderInfo.country)
     
    const  handleDelete=()=>{
 
@@ -33,7 +43,32 @@ let spanTag=null
       
     <div className='Order'>
 
+    <p style={{color:'white'}} className='badge_text'>Order Info:</p><br></br>
    
+            <div className='backDrop'>
+        {/* <h4>Name:           {props.orderInfo.name}</h4>
+        <h4>Billing Address:{props.orderInfo.street}</h4>
+        <h4> ZipCode:       {props.orderInfo.zippCode}</h4> */}
+
+        <table>
+        <tr> 
+        <td>Name:-     </td>
+        <td>{props.orderInfo.name.charAt(0).toUpperCase()+props.orderInfo.name.slice(1)}</td>
+         </tr>     
+         <tr> 
+        <td>Billing To:-</td>
+        <td>{props.orderInfo.street}</td>
+         </tr>     
+         <tr> 
+        <td>Zip Code:-    </td>
+        <td>{props.orderInfo.zippCode}</td>
+         </tr>     
+        </table>
+      </div>
+     
+  
+
+
       
         <p style={{color:'white'}} className='badge_text'>Ingredients:</p><br></br>
       
