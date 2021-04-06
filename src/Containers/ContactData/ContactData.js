@@ -73,13 +73,14 @@ class ContactData extends Component {
         elementconfig:{
           type:"email",
           placeholder:"Enter Your Email",
-          helper:"Enter Valid  Email"
+          helper:"Enter Valid  Email",
+          disabled:true
         },
-        value:'',
+        value:this.props.email,
         Validation:{
           required:true
         },
-        valid:false,
+        valid:true,
         touched:false
       },
       deliveryMethod: {
@@ -199,7 +200,8 @@ const mapStateToProps=(state)=>{
     ings: state.burgerBuilder.ingredients,
     price:state.burgerBuilder.totalPrice,
     loading:state.order.loading,
-    token:state.auth.token
+    token:state.auth.token,
+    email:state.auth.email
   }
 }
 const mapDispatchToProps =dispatch=>{

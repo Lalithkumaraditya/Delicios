@@ -34,15 +34,21 @@ class Orders extends Component{
 render(){
      let orders=  <Spinner />;
      if(!this.props.loading){
-       orders=this.props.orders.map(order=>(
-         
-        <Order key={order.id} ingredients={order.ingredients} price={order.price}/>
-        ))
+      let UserEmail=this.props.email;
+      console.log(JSON.stringify(this.props.orders))
+      orders=this.props.orders.filter(order=>{
+        return (UserEmail === order.orderData.email);
+      }).map(order=>{
+        return <Order key={order.id} ingredients={order.ingredients} price={order.price}/>
+      })
+    console.log(orders)
      }
+     if(orders.length==0){
+      orders=<h1 style={{color:'white',textAlign:"center",marginTop:'30%'}}>Currently You Didn't Ordered Anything ☹️</h1>
+    }
     return(
         <div>
-        
-    {orders}
+        {orders}
         </div>
     );
 }
@@ -52,7 +58,8 @@ const mapStateToProps=state=>{
   return{
     orders:state.order.orders,
     loading:state.order.fLoading,
-    token:state.auth.token
+    token:state.auth.token,
+    email:state.auth.email
   }
 }
   const mapDispatchToProps=dispatch=>{
@@ -63,3 +70,11 @@ const mapStateToProps=state=>{
  
 
 export default connect(mapStateToProps,mapDispatchToProps)(withErrorHandler(Orders,axios));
+
+
+
+//if(!this.props.loading){
+  //  orders=this.props.orders.map(order=>(
+     
+  //   <Order key={order.id} ingredients={order.ingredients} price={order.price}/>
+  //   ))

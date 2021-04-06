@@ -6,6 +6,7 @@ import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import theme from '../../../theme'
 import {ThemeProvider} from '@material-ui/core';
+import InputLabel from '@material-ui/core/InputLabel';
 const useStyles = makeStyles(theme => ({
   root: {
     display: "flex",
@@ -53,9 +54,10 @@ const Input = props => {
       break;
     case "select":
       inputElement = (
+         <React.Fragment>
         <Select
           labelId="demo-simple-select-label"
-          id="demo-simple-select"
+          id="demo-simple-select-label"
           value={props.value}
           fullWidth
           onChange={props.changed}
@@ -64,6 +66,7 @@ const Input = props => {
             <MenuItem key={option.value} value={option.value}>{option.displayValue}</MenuItem>
           ))}
         </Select>
+        </React.Fragment>
       );
   }
   return (

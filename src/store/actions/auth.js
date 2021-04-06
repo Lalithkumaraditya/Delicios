@@ -22,11 +22,12 @@ export const checkAuthTimeout=(expirationTime)=>{
   
 
 }
-export const authSuccess = (token,userId) => {
+export const authSuccess = (token,userId,email) => {
   return {
     type: actionTypes.AUTH_SUCCESS,
     idToken:token,
-    userId:userId
+    userId:userId,
+    email:email
   };
 };
 export const authFail = (err) => {
@@ -60,6 +61,7 @@ export const auth = (email, password,isSignup) => {
     
     if(!isSignup){
        url='https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyCpiA2A1OXeD8hwed7sVJUS_WOpFgB0uYM';
+
     }
     axios.post(url,authData)
       .then(response => {
@@ -68,13 +70,13 @@ export const auth = (email, password,isSignup) => {
         localStorage.setItem('token',response.data.idToken);
         localStorage.setItem('userId',response.data.localId);
         localStorage.setItem('expirationTime',expirationDate);
-      dispatch(authSuccess(response.data.idToken, response.data.localId));
+      dispatch(authSuccess(response.data.idToken, response.data.localId,authData.email));
       dispatch(checkAuthTimeout(response.data.expiresIn)) 
 
       })
       .catch((err) => {
       
-        dispatch(authFail(err.message));
+        dispatch(authFail(err));
       });
   };
 };
@@ -99,7 +101,7 @@ return dispatch=>{
          dispatch(logout())
        }else{
          const userId=localStorage.getItem('userId')
-        dispatch(authSuccess(token,userId))
+        dispatch(authSuccess(token,userId,this.state.email))
         dispatch(checkAuthTimeout(expirationTime.getTime() - new Date().getTime())/1000)
        }
     

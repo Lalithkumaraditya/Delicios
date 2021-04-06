@@ -30,6 +30,11 @@ const SnackBar = (props) => {
     message = "Successfull "+displayer;
   }
 
+  else if(props.isAuth){
+    severity = "success";
+    message="Welcome back!!"
+  }
+
   return (
     <ThemeProvider theme={theme}>
     <div>
